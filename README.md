@@ -48,3 +48,16 @@ def selectionSort(arr):    #对数组进行排序
         newArr.append(arr.pop(smallest))    #从原数组中踢出该元素并加入排序数组
     return newArr
 ```
+
+### 递归
+```
+'''
+递归必须要有基线条件和递归条件，本段以阶乘为例。
+调用栈可能很长，内存容易溢出。可考虑尾递归，但Python不支持。
+'''
+def fact(x):
+    if x == 1:                  #基线条件（不再调用）
+        return 1
+    else:                       #递归条件（调用栈）
+        return x * fact(x-1)
+```
