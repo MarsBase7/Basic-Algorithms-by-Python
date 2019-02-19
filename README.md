@@ -27,6 +27,8 @@ def binary_search(list, item):
     return None            #没有找到指定的元素
 ```
 
+<br/>
+
 ### 选择排序
 ```
 '''
@@ -48,6 +50,8 @@ def selectionSort(arr):    #对数组进行排序
         newArr.append(arr.pop(smallest))    #从原数组中踢出该元素并加入排序数组
     return newArr
 ```
+
+<br/>
 
 ### 递归
 ```
@@ -90,6 +94,8 @@ def max(list):
         return list[0] if list[0] > max([1:]) else max([1:])
 ```
 
+<br/>
+
 ### 快速排序
 ```
 '''
@@ -110,6 +116,8 @@ def quicksort(array):
         
         return quicksort(less) + [pivot] + quicksort(greater)
 ```
+
+<br/>
 
 ### 散列表
 ```
