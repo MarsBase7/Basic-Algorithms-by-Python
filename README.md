@@ -110,3 +110,19 @@ def quicksort(array):
         
         return quicksort(less) + [pivot] + quicksort(greater)
 ```
+
+### 散列表
+```
+'''
+Python中的散列表实现为字典 dict()
+本例将散列表用作网站缓存
+'''
+cache = {}
+def get_page(url):
+    if cache.get(url):
+        return cache[url]        #返回缓存的数据
+    else:
+        data = get_data_from_server(url)
+        cache[url] = data        #先将数据保存到缓存中
+        return data
+```
