@@ -90,3 +90,22 @@ def max(list):
         return list[0] if list[0] > max([1:]) else max([1:])
 ```
 
+### 快速排序
+```
+'''
+快速排序的操作数与基准值选择有关（平均为O(nlogn)，最差为O(n^2)），尽量随机选择基准值
+'''
+import random
+def quicksort(array):
+    if len(array) < 2:                             #基线条件：为空或只包含一个元素的数组，已是有序的
+        return array
+    else:
+        index = random.randint(0, len(array)-1)    #递归条件，随机选择基准值
+        pivot = array[index]
+        
+        less = [i for i in array[:index]+array[index+1:] if i <= pivot]      #所有小于基准值的元素组成的子数组
+        
+        greater = [i for i in array[:index]+array[index+1:] if i > pivot]    #所有大于基准值的元素组成的子数组
+        
+        return quicksort(less) + [pivot] + quicksort(greater)
+```
