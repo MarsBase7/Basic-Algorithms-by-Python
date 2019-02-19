@@ -60,4 +60,33 @@ def fact(x):
         return 1
     else:                       #递归条件（调用栈）
         return x * fact(x-1)
+
+'''
+其他的例子
+例1: 以递归方式写sum函数
+'''
+def sum(list):
+    if list == []:
+        return 0
+    else:
+        return list[0] + list[1:]
+        
+'''
+例2: 以递归方式计算列表包含的元素数
+'''
+def count(list):
+    if list == []:
+        return 0
+    else:
+        return 1 + count(list[1:])
+      
+'''
+例3: 以递归方式找出列表中最大的数字
+'''
+def max(list):
+    if len(list) == 2:
+        return list[0] if list[0] > list[1] else list[1]
+    else:
+        return list[0] if list[0] > max([1:]) else max([1:])
 ```
+
