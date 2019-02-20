@@ -147,13 +147,13 @@ BFS算法主要应用于无加权图，以解决：1.是否存在A到B的路径�
 from collections import deque
 def search(name):
     search_queue = deque()         #使用队列，先进先出，按顺序检查，否则找到的不一定是最短路径          
-    search_queue += graph[name]    #队列从指定的某人开始
+    search_queue += graph[name]    #队列从指定的某人开始，graph{}为已知的人际网的散列表
     searched = ()                  #此tuple用来记录算法检查过的人（元组的检索速度比数组快）
     
     while search_queue:
         person = search_queue.popleft()
         if person not in searched:               #确认是否被检查过
-            if person_is_doctor(person):
+            if person_is_doctor(person):         #通过另一个函数判断是否为医生
                 print person + " is a doctor!"
                 return True
             else:
