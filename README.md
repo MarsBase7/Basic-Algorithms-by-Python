@@ -110,9 +110,8 @@ def quicksort(array):
         index = random.randint(0, len(array)-1)    #递归条件，随机选择基准值
         pivot = array[index]
         
-        less = [i for i in array[:index]+array[index+1:] if i <= pivot]      #所有小于基准值的元素组成的子数组
-        
-        greater = [i for i in array[:index]+array[index+1:] if i > pivot]    #所有大于基准值的元素组成的子数组
+        less = [i for i in array[:index]+array[index+1:] if i <= pivot]      #所有小于基准值的元素数组  
+        greater = [i for i in array[:index]+array[index+1:] if i > pivot]    #所有大于基准值的元素数组
         
         return quicksort(less) + [pivot] + quicksort(greater)
 ```
