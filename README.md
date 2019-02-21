@@ -160,3 +160,50 @@ def search(name):
                 searched += (person,)            #被标记为已检查过
     return False
 ```
+
+<br/>
+
+### 狄克斯特拉算法
+```
+'''
+'''
+#---创建三个散列表---#
+
+#GRAPH表，记录上面的整个图的关系
+graph = {}
+graph['start'] = {'a': 6, 'b': 2}
+graph['a'] = {'fin': 1}
+graph['b'] = {'a': 3, 'fin': 5}
+graph['fin'] = {}
+
+#COSTS表，记录每个节点从起点出发的已知开销（后续更新），未知的用inf代替
+costs = {'a': 6, 'b': 2, 'fin': float('inf')}
+
+#PARENTS表，记录每个节点的父节点（后续更新），最后可在该表找到最短路径
+parents = {'a': 'start', 'b': 'start', 'fin': None}
+
+processed = ()    #记录已经处理的节点，之后不用再处理
+
+def find_lowest_cost_node(costs):
+    lowest_cost = float('inf')
+    lowest_cost_node = None
+    for node in costs:
+        cost = costs[node]
+        if cost < lowest_cost and node not in processed:    #更低的开销、没有被处理过
+            lowest_cost = cost
+            lowest_cost_node = node
+    return lowest_cost_node
+
+node = find_lowest_cost_node(costs)    #在未处理的节点中找出开销最小的点
+
+while node is not None:                #循环在所有节点都被处理过后结束
+    cost = costs[node]
+    neighbors = graph[node]
+    for n in neighbors.keys():         #遍历当前节点的所有邻居
+        new_cost = cost + neighbors[n]
+        if  new_cost < costs[n]:       #如果从起点经过当前节点到该邻居的开销更小
+            costs[n] = new_cost        #则更新该邻居的开销
+            parents[n] = node          #并更新该邻居的父节点为当前节点
+    processed += (node,)               #遍历之后该节点标记为已处理过
+    node = find_lowest_cost_node(costs)
+```
